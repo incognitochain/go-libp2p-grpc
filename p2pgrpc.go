@@ -22,8 +22,8 @@ type GRPCProtocol struct {
 }
 
 // NewGRPCProtocol attaches the GRPC protocol to a host.
-func NewGRPCProtocol(ctx context.Context, host host.Host) *GRPCProtocol {
-	grpcServer := grpc.NewServer()
+func NewGRPCProtocol(ctx context.Context, host host.Host, opts ...grpc.ServerOption) *GRPCProtocol {
+	grpcServer := grpc.NewServer(opts...)
 	grpcProtocol := &GRPCProtocol{
 		ctx:        ctx,
 		host:       host,
